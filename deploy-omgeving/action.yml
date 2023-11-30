@@ -44,7 +44,7 @@ runs:
       if: | 
         always() 
         && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string)}}
-        && ${{contains(inputs.runbook_of_release, "release") }}
+        && ${{contains(inputs.runbook_of_release, 'release') }}
         && !cancelled()
       uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-version@main"
       with:
@@ -56,7 +56,7 @@ runs:
       if: |
         always() 
         && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string) }}
-        && ${{contains(inputs.runbook_of_release, "runbook") }}
+        && ${{contains(inputs.runbook_of_release, 'runbook') }}
         && !cancelled()
       uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-version@main"
       with:
