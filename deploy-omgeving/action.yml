@@ -38,7 +38,7 @@ runs:
         echo "screenit_of_peridos ${{inputs.screenit_of_peridos}}"
         echo "zoek_string_voor_omgeving ${{inputs.zoek_string_voor_omgeving}}"
         
-        echo {"ref":"${{ github.head_ref }}","inputs":{"runbook_of_release":"${{ inputs.runbook_of_release}}","omgeving":"${{inputs.omgeving}}","runbook_naam": "${{inputs.runbook_naam}}"}}'
+        echo {"ref":"${{ github.head_ref }}","inputs":{"runbook_of_release":"${{ inputs.runbook_of_release}}","omgeving":"${{inputs.omgeving}}","runbook_naam": "${{inputs.runbook_naam}}"}}
       shell: bash
       id: deploy-klaarzetten
 
