@@ -2,7 +2,7 @@ name: deploy-omgeving
 description: Bepaalt variabelen en trapt workflows af.
 
 inputs:
-  deploy-string:
+  deploy_string:
     description: String die meegegeven wordt vanuit workflow, bevat alle omgevingen die gedeployed moeten worden
     required: true
   screenit_of_peridos:
@@ -30,4 +30,10 @@ runs:
   steps:
    - run: |
       echo "test"
+      echo "deploy_string ${{inputs.deploy_string}}"
+      echo "omgeving ${{inputs.omgeving}}"
+      echo "runbook_naam ${{inputs.runbook_naam}}"
+      echo "runbook_of_release ${{inputs.runbook_of_release}}"
+      echo "screenit_of_peridos ${{inputs.screenit_of_peridos}}"
+      echo "zoek_string_voor_omgeving ${{inputs.zoek_string_voor_omgeving}}"
      shell: bash
