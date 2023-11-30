@@ -1,0 +1,6 @@
+name: Deploy de bende
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_to:
