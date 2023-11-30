@@ -42,26 +42,26 @@ runs:
       shell: bash
       id: deploy-klaarzetten
 
-    - id: octo-deploy-release
-      if: | 
-        always() 
-        && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string)}}
-        && ${{contains(inputs.runbook_of_release, 'release') }}
-        && !cancelled()
-      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-deploy@main"
-      with:
-        screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
-        omgeving: ${{ inputs.omgeving }}
-
-
-    - id: octo-deploy-runbook
-      if: |
-        always() 
-        && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string) }}
-        && ${{contains(inputs.runbook_of_release, 'runbook') }}
-        && !cancelled()
-      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-runbook-deploy@main"
-      with:
-        screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
-        omgeving: ${{ inputs.omgeving }}
-        runbook_naam: ${{ inputs.runbook_naam }}
+#    - id: octo-deploy-release
+#      if: |
+#        always()
+#        && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string)}}
+#        && ${{contains(inputs.runbook_of_release, 'release') }}
+#        && !cancelled()
+#      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-deploy@main"
+#      with:
+#        screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
+#        omgeving: ${{ inputs.omgeving }}
+#
+#
+#    - id: octo-deploy-runbook
+#      if: |
+#        always()
+#        && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string) }}
+#        && ${{contains(inputs.runbook_of_release, 'runbook') }}
+#        && !cancelled()
+#      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-runbook-deploy@main"
+#      with:
+#        screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
+#        omgeving: ${{ inputs.omgeving }}
+#        runbook_naam: ${{ inputs.runbook_naam }}
