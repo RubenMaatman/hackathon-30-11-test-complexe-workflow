@@ -46,7 +46,7 @@ runs:
         && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string)}}
         && ${{contains(inputs.runbook_of_release, 'release') }}
         && !cancelled()
-      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-version@main"
+      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-deploy@main"
       with:
         screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
         omgeving: ${{ inputs.omgeving }}
@@ -58,7 +58,7 @@ runs:
         && ${{contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string) }}
         && ${{contains(inputs.runbook_of_release, 'runbook') }}
         && !cancelled()
-      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-version@main"
+      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-deploy@main"
       with:
         screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
         omgeving: ${{ inputs.omgeving }}
