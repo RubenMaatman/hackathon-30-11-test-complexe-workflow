@@ -4,10 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       screenit_of_peridos:
-        type: string
         description: Is dit voor peridos of screenit
-        default: ""
+        default: Peridos
         required: true
+        options:
+          - Peridos
+          - ScreenIT
       runbook_of_release:
         type: string
         description: Runbook of release
@@ -20,7 +22,7 @@ on:
         required: true
       runbook_naam:
         type: string
-        description: De omgeving waar je naar wilt deployen
+        description: Runbook naam die je wilt starten
         default: ""
         required: true
 
@@ -38,7 +40,7 @@ jobs:
   deploy-release:
     if: |
       always() && !cancelled()
-      && ${{ github.event.inputs.runbooks_of_release }} == "runbook"
+      && ${{ github.event.inputs.runbooks_of_release }} == "release"
     runs-on: ubuntu-latest
     steps:
       - name: Run a runbook in Octopus Deploy 🐙
