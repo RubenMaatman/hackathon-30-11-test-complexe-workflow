@@ -1,0 +1,33 @@
+name: deploy-omgeving
+description: Bepaalt variabelen en trapt workflows af.
+
+inputs:
+  deploy-string:
+    description: String die meegegeven wordt vanuit workflow, bevat alle omgevingen die gedeployed moeten worden
+    required: true
+  screenit_of_peridos:
+    description: Is dit voor peridos of screenit
+    default: Peridos
+    required: true
+  runbook_of_release:
+    description: Runbook of release
+    default: ""
+    required: true
+  omgeving:
+    description: De omgeving waar je naar wilt deployen
+    default: ""
+    required: true
+  runbook_naam:
+    description: Runbook naam die je wilt starten
+    default: ""
+    required: true
+  zoek_string_voor_omgeving:
+    description: String waar de action naar zoekt om te bepalen of die moet deployen
+    default: ""
+    required: true
+runs:
+  using: "composite"
+  steps:
+   - run: |
+      echo "test"
+     shell: bash

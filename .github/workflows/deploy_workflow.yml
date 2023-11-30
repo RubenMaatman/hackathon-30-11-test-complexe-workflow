@@ -12,10 +12,13 @@ on:
           - Peridos
           - ScreenIT
       runbook_of_release:
-        type: string
+        type: choice
         description: Runbook of release
         default: ""
         required: true
+        options:
+          - runbook
+          - release
       omgeving:
         type: string
         description: De omgeving waar je naar wilt deployen
@@ -36,7 +39,7 @@ jobs:
       && ${{ github.event.inputs.runbooks_of_release }} == "runbook"
     runs-on: ubuntu-latest
     steps:
-      - name: Run a runbook in Octopus Deploy 🐙
+      - name: Run a runbook in gogo Kevin&Ruben 👨‍🦱👨 deploy
         run: echo "Deployen van runbook gestart voor ${{ github.event.inputs.omgeving }} gestart voor ${{ github.event.inputs.screenit_of_peridos }}, we hebben runbook ${{ github.event.inputs.runbook_naam }} gestart"
   deploy-release:
     if: |
@@ -44,5 +47,5 @@ jobs:
       && ${{ github.event.inputs.runbooks_of_release }} == "release"
     runs-on: ubuntu-latest
     steps:
-      - name: Run a runbook in Octopus Deploy 🐙
+      - name: Run a release in gogo Kevin&Ruben 👨‍🦱👨 Deploy
         run: echo "Deployen van release gestart voor ${{ github.event.inputs.omgeving }} gestart voor ${{ github.event.inputs.screenit_of_peridos }}"
