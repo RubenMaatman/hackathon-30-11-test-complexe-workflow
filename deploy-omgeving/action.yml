@@ -1,4 +1,4 @@
-name: deploy-omgeving
+name: deploy-omgeving-aantrappen
 description: Bepaalt variabelen en trapt workflows af.
 
 inputs:
@@ -25,16 +25,41 @@ inputs:
     description: String waar de action naar zoekt om te bepalen of die moet deployen
     default: ""
     required: true
+
 runs:
   using: "composite"
   steps:
-   - run: |
-      echo "test"
-      echo "deploy_string ${{inputs.deploy_string}}"
-      echo "omgeving ${{inputs.omgeving}}"
-      echo "runbook_naam ${{inputs.runbook_naam}}"
-      echo "runbook_of_release ${{inputs.runbook_of_release}}"
-      echo "screenit_of_peridos ${{inputs.screenit_of_peridos}}"
-      echo "zoek_string_voor_omgeving ${{inputs.zoek_string_voor_omgeving}}"
-      gh workflow run --help
-     shell: bash
+    - run: |
+        echo "test"
+        echo "deploy_string ${{inputs.deploy_string}}"
+        echo "omgeving ${{inputs.omgeving}}"
+        echo "runbook_naam ${{inputs.runbook_naam}}"
+        echo "runbook_of_release ${{inputs.runbook_of_release}}"
+        echo "screenit_of_peridos ${{inputs.screenit_of_peridos}}"
+        echo "zoek_string_voor_omgeving ${{inputs.zoek_string_voor_omgeving}}"
+      shell: bash
+      id: deploy-klaarzetten
+
+    - id: octo-deploy-release
+      if: | 
+        always() 
+        && contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string) 
+        && contains(inputs.runbook_of_release, "release") 
+        && !cancelled()
+      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-version@main"
+      with:
+        screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
+        omgeving: ${{ inputs.omgeving }}
+
+
+    - id: octo-deploy-runbook
+      if: |
+        always() 
+        && contains(inputs.zoek_string_voor_omgeving, inputs.deploy_string) 
+        && contains(inputs.runbook_of_release, "runbook") 
+        && !cancelled()
+      uses: "RubenMaatman/hackathon-30-11-test-complexe-workflow/mock-release-version@main"
+      with:
+        screenit_of_peridos: ${{ inputs.screenit_of_peridos }}
+        omgeving: ${{ inputs.omgeving }}
+        runbook_naam: ${{ inputs.runbook_naam }}

@@ -1,0 +1,20 @@
+name: octo-deploy-release-mock
+description: Mock van octo deploy release
+
+inputs:
+  screenit_of_peridos:
+    description: Is dit voor peridos of screenit
+    default: Peridos
+    required: true
+  omgeving:
+    description: De omgeving waar je naar wilt deployen
+    default: ""
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: deploying-release
+      run: |
+        echo "deploying nieuwe versie op ${{ inputs.omgeving }} voor ${{ inputs.screenit_of_peridos }}"
+      shell: bash
