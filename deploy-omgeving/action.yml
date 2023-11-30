@@ -40,7 +40,7 @@ runs:
         echo 
         echo {"ref":"main","inputs":{"runbook_of_release":"${{ inputs.runbook_of_release}}","omgeving":"${{inputs.omgeving}}","runbook_naam": "${{inputs.runbook_naam}}"}}
       shell: bash
-      id: deploy-klaarzetten
+      name: deploy-klaarzetten
 
 #    - id: octo-deploy-release
 #      if: |
