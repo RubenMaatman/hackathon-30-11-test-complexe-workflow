@@ -21,6 +21,11 @@ on:
         description: Runbook naam die je wilt starten
         default: ""
         required: true
+      screenit_of_peridos:
+        type: string
+        description: Screenit of peridos?
+        default: ""
+        required: true
 
 run-name: Deployen van ${{ github.event.inputs.omgeving }} op ${{ github.event.inputs.screenit_of_peridos }}
 
