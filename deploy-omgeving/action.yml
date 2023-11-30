@@ -36,4 +36,5 @@ runs:
       echo "runbook_of_release ${{inputs.runbook_of_release}}"
       echo "screenit_of_peridos ${{inputs.screenit_of_peridos}}"
       echo "zoek_string_voor_omgeving ${{inputs.zoek_string_voor_omgeving}}"
+      gh workflow run --help
      shell: bash
