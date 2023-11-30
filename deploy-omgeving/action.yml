@@ -30,7 +30,7 @@ runs:
   using: "composite"
   steps:
     - run: |
-        echo "deploy? ${{contains(inputs.deploy_string, inputs.zoek_string_voor_omgeving"
+        echo "deploy? ${{contains(inputs.deploy_string, inputs.zoek_string_voor_omgeving)}}"
         echo {"ref":"main","inputs":{"runbook_of_release":"${{ inputs.runbook_of_release}}","omgeving":"${{inputs.omgeving}}","runbook_naam": "${{inputs.runbook_naam}}"}}
       shell: bash
       name: deploy-klaarzetten
