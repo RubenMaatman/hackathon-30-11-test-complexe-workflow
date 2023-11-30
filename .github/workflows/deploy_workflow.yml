@@ -3,14 +3,6 @@ name: Deploy de bende
 on:
   workflow_dispatch:
     inputs:
-      screenit_of_peridos:
-        type: choice
-        description: Is dit voor peridos of screenit
-        default: Peridos
-        required: true
-        options:
-          - Peridos
-          - ScreenIT
       runbook_of_release:
         type: choice
         description: Runbook of release
