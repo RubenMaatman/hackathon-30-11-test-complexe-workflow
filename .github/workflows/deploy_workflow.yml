@@ -3,4 +3,43 @@ name: Deploy de bende
 on:
   workflow_dispatch:
     inputs:
-      deploy_to:
+      screenit_of_peridos:
+        type: string
+        description: Is dit voor peridos of screenit
+        default: ""
+        required: true
+      runbook_of_release:
+        type: string
+        description: Runbook of release
+        default: ""
+        required: true
+      omgeving:
+        type: string
+        description: De omgeving waar je naar wilt deployen
+        default: ""
+        required: true
+      runbook_naam:
+        type: string
+        description: De omgeving waar je naar wilt deployen
+        default: ""
+        required: true
+
+run-name: Deployen van ${{ github.event.inputs.omgeving }} op ${{ github.event.inputs.screenit_of_peridos }}
+
+jobs:
+  deploy-runbook:
+    if: |
+      always() && !cancelled()
+      && ${{ github.event.inputs.runbooks_of_release }} == "runbook"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a runbook in Octopus Deploy 🐙
+        run: echo "Deployen van runbook gestart voor ${{ github.event.inputs.omgeving }} gestart voor ${{ github.event.inputs.screenit_of_peridos }}, we hebben runbook ${{ github.event.inputs.runbook_naam }} gestart"
+  deploy-release:
+    if: |
+      always() && !cancelled()
+      && ${{ github.event.inputs.runbooks_of_release }} == "runbook"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a runbook in Octopus Deploy 🐙
+        run: echo "Deployen van release gestart voor ${{ github.event.inputs.omgeving }} gestart voor ${{ github.event.inputs.screenit_of_peridos }}"
