@@ -15,10 +15,12 @@ runs:
   using: "composite"
   steps:
     - name: Wel gevonden
-      if: contains(inputs.tekstzoek, inputs.zoektekst)
+      if: |
+        contains(inputs.tekstzoek, inputs.zoektekst)
       run: echo ja de zoek is succesvol
       shell: bash
     - name: Niet gevonden
-      if: !contains(inputs.tekstzoek, inputs.zoektekst)
+      if: |
+        !contains(inputs.tekstzoek, inputs.zoektekst)
       run: echo de zoek is onsuccesvol
       shell: bash
